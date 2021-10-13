@@ -1,0 +1,231 @@
+<!DOCTYPE HTML><html>
+<!-- -->
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <Content-type:application/json>
+  <style>
+    body {
+      min-width: 310px;
+    	  max-width: 800px;
+    	  height: 400px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-family: Arial;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>EEG Readings</h2>
+  <div id="chart-c1"></div>
+  <div id="chart-c2"></div>
+  <div id="chart-c3"></div>
+  <div id="chart-c4"></div>
+</body>
+
+
+<script>
+
+Highcharts.setOptions({
+  global:{
+    useUTC: false
+  }
+});
+
+var intervalUpdate = 100;
+
+// Chart 1
+var chart1 = new Highcharts.Chart({
+  chart:{ renderTo : 'chart-c1',
+          animation: false},
+  title: { text: '' },
+
+  series: [{
+    showInLegend: false,
+	  name: 'Chart-C1',
+    data: []
+  }],
+
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: false }
+    },
+    series: {
+        color: '#059e8a',
+            marker: {
+                enabled: false
+            }
+        }
+  },
+  xAxis: { type: 'datetime',
+    labels: { enabled: false },
+      dateTimeLabelFormats: { second: '%H:%M:%S' }
+  },
+  yAxis: {
+    labels: { enabled: false },
+    title: { text: 'Chart 1' }
+  },
+  credits: { enabled: false }
+});
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime();
+	    var y = parseFloat(this.responseText);
+
+      if(chart1.series[0].data.length > 200) {
+        chart1.series[0].addPoint([x, y], true, true, true);
+      } else {
+        chart1.series[0].addPoint([x, y], true, false, true);
+      }
+		  }
+  };
+  xhttp.open("GET", "/c1", true);
+  xhttp.send();
+}, intervalUpdate ) ;
+
+// Chart 2
+var chart2 = new Highcharts.Chart({
+  chart:{ renderTo : 'chart-c2' },
+  title: { text: '' },
+  series: [{
+    showInLegend: false,
+	  name: 'Chart-C2',
+    data: []
+  }],
+
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: false }
+    },
+    series: { color: '#059e8a' }
+  },
+  xAxis: { type: 'datetime',
+    labels: { enabled: false },
+      dateTimeLabelFormats: { second: '%H:%M:%S' }
+  },
+  yAxis: {
+    labels: { enabled: false },
+    title: { text: 'Chart 2' }
+  },
+  credits: { enabled: false }
+});
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime();
+	    var y = parseFloat(this.responseText);
+
+      if(chart2.series[0].data.length > 40) {
+        chart2.series[0].addPoint([x, y], true, true, true);
+      } else {
+        chart2.series[0].addPoint([x, y], true, false, true);
+      }
+		  }
+  };
+  xhttp.open("GET", "/c2", true);
+  xhttp.send();
+}, intervalUpdate ) ;
+
+
+// Chart 3
+var chart3 = new Highcharts.Chart({
+  chart:{ renderTo : 'chart-c3' },
+  title: { text: '' },
+  series: [{
+    showInLegend: false,
+	  name: 'Chart-C3',
+    data: []
+  }],
+
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: false }
+    },
+    series: { color: '#059e8a' }
+  },
+  xAxis: { type: 'datetime',
+    labels: { enabled: false },
+      dateTimeLabelFormats: { second: '%H:%M:%S' }
+  },
+  yAxis: {
+    labels: { enabled: false },
+    title: { text: 'Chart 3' }
+  },
+  credits: { enabled: false }
+});
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime();
+	    var y = parseFloat(this.responseText);
+
+      if(chart3.series[0].data.length > 40) {
+        chart3.series[0].addPoint([x, y], true, true, true);
+      } else {
+        chart3.series[0].addPoint([x, y], true, false, true);
+      }
+		  }
+  };
+  xhttp.open("GET", "/c3", true);
+  xhttp.send();
+}, intervalUpdate ) ;
+
+// Chart 4
+var chart4 = new Highcharts.Chart({
+  chart:{ renderTo : 'chart-c4' },
+  title: { text: '' },
+  series: [{
+    showInLegend: false,
+	  name: 'Chart-C4',
+    data: []
+  }],
+
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: false }
+    },
+    series: { color: '#059e8a' }
+  },
+  xAxis: { type: 'datetime',
+    labels: { enabled: false },
+      dateTimeLabelFormats: { second: '%H:%M:%S' }
+  },
+  yAxis: {
+    labels: { enabled: false },
+    title: { text: 'Chart 4' }
+  },
+  credits: { enabled: false }
+});
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime();
+	    var y = parseFloat(this.responseText);
+
+      if(chart4.series[0].data.length > 40) {
+        chart4.series[0].addPoint([x, y], true, true, true);
+      } else {
+        chart4.series[0].addPoint([x, y], true, false, true);
+      }
+		  }
+  };
+  xhttp.open("GET", "/c4", true);
+  xhttp.send();
+}, intervalUpdate ) ;
+
+</script>
+</html>
