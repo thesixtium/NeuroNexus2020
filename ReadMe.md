@@ -20,7 +20,9 @@ Once everything is loaded, both programs need to be run via their IDE's. The web
 This project should not be used in a medical setting as it has too many flaws and has not been tested enough.
 
 ## Contact
-[My Website](https://ajrberezowski.wixsite.com/aleksander/)
+[My Website](https://thesixtium.github.io/)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+
